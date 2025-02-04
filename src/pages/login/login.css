@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{ 
+    width: 100vw;
+    height: 100vh;
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2c2;
+}
+
+.container{
+    display: flex;
+    width: 80vw;
+    height: 80vh;
+    background-color: #fff;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45vw;
+    height: 80vh;
+    background: rgb(131,58,180);
+    background: linear-gradient(43deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%); 
+}
+
+.conteudo{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 35vw;
+    height: 80vh;
+    background-color: #fff;
+}
+
+.circulo{
+    display: flex;
+    position: absolute;
+    border-radius: 100%;
+    background: linear-gradient(43deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%); 
+}
+
+.circulo:nth-child(1){
+    height: 20vh;
+    width: 20vh;
+    top: 10px;
+    right: 10px;
+    animation: mover 1s infinite;
+}
+
+
+@keyframes mover {
+    0% {
+      -webkit-transform: translate(-15px);
+    }
+    50% {
+      -webkit-transform: translate(0px);
+    }
+    100% {
+      -webkit-transform: translate(-15px);
+    }
+  }
+
+
+.titulo{
+    color: red;
+    font-size: 60px;
+}
+
+.detalhe{
+    color: #725353;
+    text-align: center;
+    font-size: 15px;
+}
+
+.nome{
+    color: #fff;
+    font-size: 35px;
+}
+
+.campo{
+    display: flex;
+    margin: 1vh;
+    padding: 9px;
+    border-radius: 10px;
+    color: #fff;
+    border:none;
+    box-shadow: 1px 1px 1px 1px rgb(177, 175, 175);
+    text-decoration: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.campo:hover{
+    padding: 7px;
+    border: 2px outset #fff;
+}
+
+.butao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    width: 20vh;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+    border: 1px solid #fff;
+    margin: 1vh;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.butao:hover{
+    background-color: red;
+    opacity:90%;
+    padding: 9px;
+    border: none;
+}
+
+.texto{
+    display: flex;
+    color: #fff;
+    padding: 10px;
+    gap: 10px;
+}
+
+.cadastro{
+    cursor: pointer;
+}
+
+.cadastro:hover{
+    text-decoration:underline;
+}
