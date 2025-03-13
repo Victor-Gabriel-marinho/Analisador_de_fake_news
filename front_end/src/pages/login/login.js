@@ -12,7 +12,9 @@ function App() {
     setvis2(!vis2)
 
     setanim(true);
+    if (anim) setanim(false)
   }
+
 
     return (
       <div className="App">
