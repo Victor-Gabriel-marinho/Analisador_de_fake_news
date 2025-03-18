@@ -15,7 +15,6 @@ function App() {
     if (anim) setanim(false)
   }
 
-
     return (
       <div className="App">
         <div className = "container">
@@ -25,7 +24,9 @@ function App() {
                 <input className="campo" type="email" placeholder="Email"></input>
                 <input className="campo" type="password" placeholder="Senha"></input>
                 <button className= "butao" type="button">Logar</button>
-              <p className = "texto" >Não tem uma conta? <button onClick = {animacao} className ="cadastro_btn"> cadastre-se </button>  </p>
+              <p className = "texto" >Não tem uma conta?
+                <button onClick = {animacao} className ="cadastro_btn"> cadastre-se </button>
+              </p>
             </form>)}
 
             <div className={`conteudo ${anim ? 'troca' : ''}`} >
@@ -38,7 +39,9 @@ function App() {
                 <input className="campo" type="email" placeholder="Email"></input>
                 <input className="campo" type="password" placeholder="Senha"></input>
                 <button className= "butao" type="button">cadastrar</button>
-                <p className = "texto" >ja tem uma conta? <button onClick = {animacao} className ="cadastro_btn"> login </button>  </p>
+                <p className = "texto" >ja tem uma conta? 
+                  <button onClick = {animacao} className ="cadastro_btn"> login </button>
+                </p>
               </form>)}
         </div>
       </div>
