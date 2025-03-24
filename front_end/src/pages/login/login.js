@@ -21,6 +21,7 @@ function App() {
 
             {vis && (<form className="form" >
                 <h2 className="nome">Login</h2>
+                <input className="campo" type="text" placeholder="nome"></input>
                 <input className="campo" type="email" placeholder="Email"></input>
                 <input className="campo" type="password" placeholder="Senha"></input>
                 <button className= "butao" type="button">Logar</button>
@@ -36,6 +37,7 @@ function App() {
 
              {vis2 &&( <form className="cadastrar">
                 <h2 className="nome">Cadastre-se</h2>
+                <input className="campo" type="text" placeholder="nome"></input>
                 <input className="campo" type="email" placeholder="Email"></input>
                 <input className="campo" type="password" placeholder="Senha"></input>
                 <button className= "butao" type="button">cadastrar</button>
