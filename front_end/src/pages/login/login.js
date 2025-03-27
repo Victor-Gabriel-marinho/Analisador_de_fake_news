@@ -1,4 +1,5 @@
 import {useState} from "react"
+import axios from "axios"
 import "./login.css";
 
 function App() {
@@ -14,6 +15,25 @@ function App() {
     setanim(true);
     if (anim) setanim(false)
   }
+  
+  const criar_usu = (event) => {
+    event.preventDefault()
+
+    const user = {
+      "nome": event.target[0].value,
+      "email": event.target[1].value,
+      "senha": event.target[2].value,
+    }
+
+    axios
+      .post("http://127.0.0.1:8800/criar", user)
+      .then( () => {
+        console.log("sucesso ao criar o usuário")
+      })
+      .catch( (Error) => {
+        console.log("erro ao criar o usuário", Error)
+      })
+  };
 
     return (
       <div className="App">
@@ -35,12 +55,12 @@ function App() {
               <p className= "detalhe"> site desenvolvido para ajudar pessoas a descobrir se uma notícia é verídica ou não  </p>
             </div>
 
-             {vis2 &&( <form className="cadastrar">
+             {vis2 &&( <form className="cadastrar" onSubmit={criar_usu}>
                 <h2 className="nome">Cadastre-se</h2>
                 <input className="campo" type="text" placeholder="nome"></input>
                 <input className="campo" type="email" placeholder="Email"></input>
                 <input className="campo" type="password" placeholder="Senha"></input>
-                <button className= "butao" type="button">cadastrar</button>
+                <button className= "butao" type="submite">cadastrar</button>
                 <p className = "texto" >ja tem uma conta? 
                   <button onClick = {animacao} className ="cadastro_btn"> login </button>
                 </p>

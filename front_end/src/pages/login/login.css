@@ -29,12 +29,11 @@ body{
     height: 80vh;
     background: rgb(131,58,180);
     background-image: linear-gradient(43deg, #ffb600 0, #ffa304 16.67%, #ff8f16 33.33%, #f37b1f 50%, #e56725 66.67%, #d7562a 83.33%, #cb462e 100%);
-    animation: mover 2s ease;
 }
 
 @keyframes mover {
     from{
-        transform: translateX(78%);
+        transform: translateX(-100%);
     }
     to{
         transform: translateX(0%);
@@ -49,6 +48,7 @@ body{
     width: 35vw;
     height: 80.2vh;
     background-color: #fff;
+    animation: mover 2s ease;
 }
 
 .troca{
