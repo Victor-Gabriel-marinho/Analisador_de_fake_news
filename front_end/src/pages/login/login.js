@@ -1,11 +1,13 @@
 import {useState} from "react"
 import axios from "axios"
 import "./login.css";
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
   const [anim, setanim] = useState(false)
   const [vis, setvis] = useState(true)
   const [vis2, setvis2] = useState(false)
+  const navigate = useNavigate()
   const animacao = (e) => {
     e.preventDefault();
 
@@ -29,6 +31,7 @@ const Login = () => {
       .post("http://127.0.0.1:8800/criar", user)
       .then( () => {
         console.log("sucesso ao criar o usuário")
+        navigate('/')
       })
       .catch( (Error) => {
         console.log("erro ao criar o usuário", Error)
@@ -44,7 +47,7 @@ const Login = () => {
                 <input className="campo" type="text" placeholder="nome"></input>
                 <input className="campo" type="email" placeholder="Email"></input>
                 <input className="campo" type="password" placeholder="Senha"></input>
-                <button className= "butao" type="button">Logar</button>
+                <button className= "butao" type="button">Login</button>
               <p className = "texto" >Não tem uma conta?
                 <button onClick = {animacao} className ="cadastro_btn"> cadastre-se </button>
               </p>

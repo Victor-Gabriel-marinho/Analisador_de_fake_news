@@ -7,6 +7,7 @@ export const criar_usu = (req,res) => {
         req.body.email,
         req.body.senha,
     ];
+    const requis = "SELECT * FROM usuarios WHERE nome=`req.body.nome`"
 
     db.query(q, [dados], (err) => {
         if (err) return res.json(err)
@@ -24,3 +25,7 @@ export const pegar_usu = (_,res) => {
         return res.status(200).json(data)
     })
 };
+
+export const testar_usu = () => {
+
+}
