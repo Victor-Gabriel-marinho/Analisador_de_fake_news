@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from '../src/pages/login/login';
-
+import Rotas from "./rotas.js"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Rotas />
   </React.StrictMode>
 );

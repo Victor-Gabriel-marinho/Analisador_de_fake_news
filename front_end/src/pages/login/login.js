@@ -2,7 +2,7 @@ import {useState} from "react"
 import axios from "axios"
 import "./login.css";
 
-function App() {
+const Login = () => {
   const [anim, setanim] = useState(false)
   const [vis, setvis] = useState(true)
   const [vis2, setvis2] = useState(false)
@@ -70,4 +70,4 @@ function App() {
     );
   }
   
-  export default App;  
+  export default Login;  
