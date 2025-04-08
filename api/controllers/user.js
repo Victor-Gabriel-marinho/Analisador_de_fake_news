@@ -34,3 +34,19 @@ export const pegar_usu = (_,res) => {
         return res.status(200).json(data)
     })
 };
+
+export const validar_usu = (req,res) => {
+    const q = "SELECT * FROM usuarios WHERE nome = ? AND email = ? AND senha = ?"
+
+    const usu = [
+        req.body.nome,
+        req.body.email,
+        req.body.senha,
+    ]
+
+    db.query(q, usu, (data,err) => {
+        if (err) return res.json(err);
+
+        return res.status(200).json(data);
+    });
+};

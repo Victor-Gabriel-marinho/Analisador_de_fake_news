@@ -7,7 +7,8 @@ const Login = () => {
   const [anim, setanim] = useState(false)
   const [vis, setvis] = useState(true)
   const [vis2, setvis2] = useState(false)
-  const navigate = useNavigate()  
+  const navigate = useNavigate()
+
   const animacao = (e) => {
     e.preventDefault();
 
@@ -38,16 +39,39 @@ const Login = () => {
       })
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const user = {
+      "nome": e.target[0].value,
+      "email": e.target[1].value,
+      "senha": e.target[2].value,
+    }
+    axios
+      .get("http://127.0.0.1:8800/validar", user)
+      .then( () => {
+          console.log("usuario encontrado")
+          navigate('/')
+      .catch((Error) => {
+        console.log("erro ao encontrar usu", Error)
+      })
+    })
+  }
+
     return (
       <div className="App">
         <div className = "container">
 
-            {vis && (<form className="form" >
+            {vis && (<form className="form" onSubmit={handleSubmit}>
+
                 <h2 className="nome">Login</h2>
+
                 <input className="campo" type="text" placeholder="nome"></input>
                 <input className="campo" type="email" placeholder="Email"></input>
                 <input className="campo" type="password" placeholder="Senha"></input>
-                <button className= "butao" type="button">Login</button>
+
+                <button className= "botao" type="submite">Login</button>
+                
               <p className = "texto" >Não tem uma conta?
                 <button onClick = {animacao} className ="cadastro_btn"> cadastre-se </button>
               </p>
@@ -59,11 +83,13 @@ const Login = () => {
             </div>
 
              {vis2 &&( <form className="cadastrar" onSubmit={criar_usu}>
+
                 <h2 className="nome">Cadastre-se</h2>
+                
                 <input className="campo" type="text" placeholder="nome"></input>
                 <input className="campo" type="email" placeholder="Email"></input>
                 <input className="campo" type="password" placeholder="Senha"></input>
-                <button className= "butao" type="submite">cadastrar</button>
+                <button className= "botao" type="submite">cadastrar</button>
                 <p className = "texto" >ja tem uma conta? 
                   <button onClick = {animacao} className ="cadastro_btn"> login </button>
                 </p>
@@ -71,6 +97,6 @@ const Login = () => {
         </div>
       </div>
     );
-  }
   
-  export default Login;  
+}
+  export default Login;

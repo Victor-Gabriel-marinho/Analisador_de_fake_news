@@ -117,7 +117,7 @@ body{
     border: 2px outset #ffffff;
 }
 
-.butao{
+.botao{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -133,11 +133,11 @@ body{
     cursor: pointer;
 }
 
-.butao:active{
+.botao:active{
     transform: scale(0.9)
 }
 
-.butao:hover{
+.botao:hover{
     opacity:90%;
 }
 
