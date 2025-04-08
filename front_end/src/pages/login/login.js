@@ -7,7 +7,7 @@ const Login = () => {
   const [anim, setanim] = useState(false)
   const [vis, setvis] = useState(true)
   const [vis2, setvis2] = useState(false)
-  const navigate = useNavigate()
+  const navigate = useNavigate()  
   const animacao = (e) => {
     e.preventDefault();
 

@@ -5,6 +5,5 @@ const router = express.Router();
 
 router.post('/criar', criar_usu);
 router.get('/', pegar_usu)
-router.get('/testar', )
 
 export default router;
