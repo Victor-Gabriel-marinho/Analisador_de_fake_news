@@ -10,9 +10,9 @@ module.exports = {
       },
       colors: {
         fundo: '#f2f2c2',
+        detalhe: '#725353',
       },
     },
   },
   plugins: [],
 }
-
