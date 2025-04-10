@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .gradient {
+      background-image: linear-gradient(
+        to bottom right,
+        #ffb600 0%,        /* gradient1 */
+        #ffa304 16.67%,    /* gradient2 */
+        #ff8f16 33.33%,    /* gradient3 */
+        #f37b1f 50%,       /* gradient4 */
+        #e56725 66.67%,    /* gradient5 */
+        #d7562a 83.33%,    /* gradient6 */
+        #cb462e 100%       /* gradient7 */
+      );
+    }
+    @keyframes mover {
+        from{
+            transform: translateX(-100%);
+        }
+        to{
+            transform: translateX(0%);
+        }
+      }
+  }
