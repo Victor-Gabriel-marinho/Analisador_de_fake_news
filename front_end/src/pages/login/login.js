@@ -67,10 +67,10 @@ const Login = () => {
                 <input className="flex p-1 mt-2 rounded-lg border-2 border-solid decoration-none outline-none bg-transparent text-white hover:opacity-70" type="email" placeholder="Email"></input>
                 <input className="flex p-1 mt-2 rounded-lg border-2 border-solid decoration-none outline-none bg-transparent text-white hover:opacity-70" type="password" placeholder="Senha"></input>
 
-                <button className= "flex items-center justify-center p-2 text-white border border-solid border-white mt-1 w-32 rounded-lg cursor-pointer hover:opacity-70" type="submite">Entrar</button>
+                <button className= "flex items-center justify-center p-2 bg-transparent text-white border border-solid border-white mt-1 w-32 rounded-lg cursor-pointer hover:opacity-70" type="submite">Entrar</button>
                 
               <p className = "flex text-white p-2 gap-2" >Não tem uma conta?
-                <button onClick = {animacao} className ="hover:underline"> cadastre-se </button>
+                <button onClick = {animacao} className ="bg-transparent border-none text-white hover:underline"> cadastre-se </button>
               </p>
             </form>)}
 
@@ -87,10 +87,10 @@ const Login = () => {
                 <input className="flex p-1 mt-2 rounded-lg border-2 border-solid decoration-none outline-none bg-transparent text-zinc-200 hover:bg-white hover:border-none hover:p-1.5" type="email" placeholder="Email"></input>
                 <input className="flex p-1 mt-2 rounded-lg border-2 border-solid decoration-none outline-none bg-transparent text-zinc-200 hover:bg-white hover:border-none hover:p-1.5" type="password" placeholder="Senha"></input>
                 
-                <button className= "flex items-center justify-center p-2 text-white border border-solid border-white mt-1 w-32 rounded-lg cursor-pointer hover:opacity-70" type="submite">cadastrar</button>
+                <button className= "flex items-center justify-center p-2 bg-transparent text-white border border-solid border-white mt-1 w-32 rounded-lg cursor-pointer hover:opacity-70" type="submite">cadastrar</button>
                 
                 <p className = "flex text-white p-2 gap-2" >ja tem uma conta? 
-                  <button onClick = {animacao} className ="hover:underline"> login </button>
+                  <button onClick = {animacao} className ="bg-transparent border-none text-white hover:underline"> login </button>
                 </p>
               </form>)}
         </div>
