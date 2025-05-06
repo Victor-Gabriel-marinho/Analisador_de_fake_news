@@ -17,6 +17,10 @@
         #cb462e 100%       /* gradient7 */
       );
     }
+    *{
+      margin: 0;
+      padding: 0;
+    }
 
     @keyframes mover {
         from{
