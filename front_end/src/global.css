@@ -5,18 +5,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 @layer utilities {
-    .gradient {
-      background-image: linear-gradient(
-        to bottom right,
-        #ffb600 0%,        /* gradient1 */
-        #ffa304 16.67%,    /* gradient2 */
-        #ff8f16 33.33%,    /* gradient3 */
-        #f37b1f 50%,       /* gradient4 */
-        #e56725 66.67%,    /* gradient5 */
-        #d7562a 83.33%,    /* gradient6 */
-        #cb462e 100%       /* gradient7 */
-      );
-    }
     *{
       font-family: "Poppins";
       margin: 0;
@@ -88,4 +76,24 @@
     }
     .fechar{
       animation: fechar 1s ease;
+    }
+    @keyframes box {
+      0%{
+        box-shadow: 0px 0px 20px 10px  #cb462e;
+      }
+      25%{
+        box-shadow: 0px 0px 20px 10px #ffb600;
+      }
+      50%{
+        box-shadow: 0px 0px 20px 10px #ff8f16;
+      }
+      75%{
+        box-shadow: 0px 0px 20px 10px #e56725;
+      }
+      100%{
+        box-shadow: 0px 0px 20px 10px #cb462e;
+      }
+    }
+    .box{
+      animation: box 5s infinite ease-in-out;
     }
