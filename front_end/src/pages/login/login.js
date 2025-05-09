@@ -57,7 +57,7 @@ const Login = () => {
   }
 
     return (
-      <div className="App w-screen h-screen bg-zinc-800 flex items-center justify-center">
+      <div className="App w-screen h-screen back flex items-center justify-center">
         <div className = "flex w-auto h-5/6 items-center justify-center font-poppins font-medium rounded-3xl box bg-zinc-900">
 
             {vis && (<form className="flex flex-col items-center justify-center w-4/6 h-full " onSubmit={handleSubmit}>
@@ -75,8 +75,10 @@ const Login = () => {
             </form>)}
 
             <div className={`flex items-center justify-center flex-col w-4/6 h-full bg-zinc-900 rounded-3xl  mover ${vis2 ? 'rounded-l-3xl' : 'rounded-r-3xl'} ${anim ? 'troca' : ''}`} >
-              <h1 className="text-red-600 text-6xl font-semibold mudar"> Fake analisys </h1>
-              <p className= "text-center text-white mr-[0.7em] mt-3"> site desenvolvido para ajudar pessoas a descobrir se uma notícia é verídica ou não  </p>
+              <div className="flex flex-col items-center content-center">
+                <h1 className="text-red-600 text-6xl font-semibold mudar"> Fake analisys </h1>
+                <p className= "text-center text-white mr-[0.7em] mt-3"> site desenvolvido para ajudar pessoas a descobrir se uma notícia é verídica ou não  </p>
+              </div>
             </div>
 
              {vis2 &&( <form className="flex flex-col items-center justify-center w-4/6 h-full gradient" onSubmit={criar_usu}>

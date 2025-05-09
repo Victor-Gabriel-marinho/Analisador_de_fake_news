@@ -11,6 +11,14 @@
       padding: 0;
     }
 
+    .back{
+      background: linear-gradient(145deg, #0d0d18, #1c1c2e, #141422, #0a0a18);
+    }
+
+    .bs{
+      box-shadow: 0 6px 24px #00000066;
+    }
+
     @keyframes mover {
         from{
             transform: translateX(-100%);
@@ -20,7 +28,7 @@
         }
       }
       .mover{
-      animation: mover 2s ease;
+      animation: mover 1.5s ease;
       }
       @keyframes trocar{
         0% {
@@ -32,7 +40,7 @@
         }
       }
       .troca {
-        animation: trocar 2s ease;
+        animation: trocar 1.5s ease;
       }
       @keyframes mudar {
         0%{
@@ -64,7 +72,7 @@
       }
     }
     .abrir{
-      animation: abrir 1s ease;
+      animation: abrir 0.5s ease;
     }
     @keyframes fechar{
       0%{
@@ -75,7 +83,7 @@
       }
     }
     .fechar{
-      animation: fechar 1s ease;
+      animation: fechar 0.5s ease;
     }
     @keyframes box {
       0%{
