@@ -1,24 +1,13 @@
 import { HiArrowCircleUp } from "react-icons/hi";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 const Home = () => {
-  const [noticia, setnoticia] = useState([])
+  const [noticias, setnoticias] = useState([])
+  const [carregando, setcarregando] = useState(false)
+  const [query, setquery] = useState('')
 
-  useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.rss2json.com/v1/api.json?rss_url=https://g1.globo.com/rss/g1/`
-        );
-        console.log(response.data.items);
-      } catch (error) {
-        console.error('Erro ao buscar notícias:', error);
-      }
-    };
 
-    fetchNews();
-  }, []);
 
 
  return (
@@ -33,7 +22,11 @@ const Home = () => {
                           <p className ="text-white ">Qual a analise de hoje?</p>
                       </div>
                       <div className = "bg-zinc-700 rounded-xl flex flex-row justify-between items-center w-3/4 h-1/6 bs">
-                        <input className= "w-5/6 h-full outline-none bg-transparent border-none text-white pl-3 text-base" placeholder="Digite o título da notícia aqui" type="text"></input>
+                        <input className= "w-5/6 h-full outline-none bg-transparent border-none text-white pl-3 text-base" placeholder="Digite o título da notícia aqui" 
+                        type="text"
+                        onChange={(e) => {setquery(e.target.value)}}
+                        >
+                        </input>
                         <div className = "w-1/6 h-full flex items-center justify-center ">
                           <HiArrowCircleUp className= "cursor-pointer text-5xl text-zinc-500" />
                          </div>

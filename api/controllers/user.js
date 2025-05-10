@@ -1,5 +1,6 @@
 import {db} from "../db.js";
-
+import axios from  "axios"
+import 'dotenv/config'
 
 export const criar_usu = (req,res) => {
     const email = req.body.email;
@@ -51,3 +52,29 @@ export const validar_usu = (req,res) => {
         return res.redirect('/login');
     });
 };
+
+export const get_news = async (req,res) => {
+    try{
+        const query = req.query;
+
+
+        if (!query) {
+            return res.status(400).json({ error: 'Parâmetro "query" é obrigatório' });
+        }
+
+        const response = await axios.get(
+          `https://factchecktools.googleapis.com/v1alpha1/claims:search`,
+          {
+            params: {
+                key: process.env.GOOGLE_API_KEY,
+                query:query,
+                languageCode: 'Pt-BR'
+          }}
+        );
+
+        res.json(response.data)
+    }
+    catch(error) {
+        console.error('Erro na verificação:', error);
+        res.status(500).json({ error: 'Erro ao verificar a notícia',details: error.message });    }
+}
