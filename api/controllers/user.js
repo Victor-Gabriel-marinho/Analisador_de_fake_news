@@ -55,8 +55,7 @@ export const validar_usu = (req,res) => {
 
 export const get_news = async (req,res) => {
     try{
-        const query = req.query;
-
+        const query = req.query.q;
 
         if (!query) {
             return res.status(400).json({ error: 'Parâmetro "query" é obrigatório' });
@@ -68,13 +67,34 @@ export const get_news = async (req,res) => {
             params: {
                 key: process.env.GOOGLE_API_KEY,
                 query:query,
-                languageCode: 'Pt-BR'
-          }}
+                languageCode: 'pt-BR'
+          }, 
+        }
         );
 
         res.json(response.data)
-    }
-    catch(error) {
+    } catch (error) {
         console.error('Erro na verificação:', error);
-        res.status(500).json({ error: 'Erro ao verificar a notícia',details: error.message });    }
+        
+        // Tratamento mais detalhado dos erros
+        if (error.response) {
+            // Erro da API do Google
+            res.status(error.response.status).json({ 
+                error: 'Erro na API de verificação de fatos',
+                details: error.response.data 
+            });
+        } else if (error.request) {
+            // Falha na requisição
+            res.status(500).json({ 
+                error: 'Não foi possível conectar à API de verificação',
+                details: 'O servidor não respondeu'
+            });
+        } else {
+            // Outros erros
+            res.status(500).json({ 
+                error: 'Erro interno no servidor',
+                details: error.message 
+            });
+        }
+    }
 }

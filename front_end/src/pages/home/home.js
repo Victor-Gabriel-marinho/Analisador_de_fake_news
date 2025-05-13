@@ -4,11 +4,41 @@ import axios from "axios";
 
 const Home = () => {
   const [noticias, setnoticias] = useState([])
+  const [active,setactive] = useState(false)
   const [carregando, setcarregando] = useState(false)
-  const [query, setquery] = useState('')
 
+const active_btn = (e) => {
+  const text = e.target.value;
+  if (text) {
+  setactive(true)
+  } else{
+    setactive(false)
+  }
+}
 
-
+const check_news = () => {
+    setmodal(true)
+    setcarregando(true)
+    const news = document.querySelector('#get_value_input').value.trim()
+    axios 
+    .get("http://127.0.0.1:8800/noticias", {
+      params: {
+        q: news
+      }
+    })
+    .then((response) => {
+        setnoticias(response.data)
+        setcarregando(false)
+        console.log(response.data)
+    })
+      .catch((error) => {
+        console.error('Erro detalhado:', {
+            status: error.response?.status,
+            message: error.response?.data?.message || error.message,
+            details: error.response?.data
+        });
+      })
+}
 
  return (
    <div className= "flex flex-col  h-screen ">
@@ -24,11 +54,15 @@ const Home = () => {
                       <div className = "bg-zinc-700 rounded-xl flex flex-row justify-between items-center w-3/4 h-1/6 bs">
                         <input className= "w-5/6 h-full outline-none bg-transparent border-none text-white pl-3 text-base" placeholder="Digite o título da notícia aqui" 
                         type="text"
-                        onChange={(e) => {setquery(e.target.value)}}
+                        onChange={active_btn}
+                        id="get_value_input"
                         >
                         </input>
                         <div className = "w-1/6 h-full flex items-center justify-center ">
-                          <HiArrowCircleUp className= "cursor-pointer text-5xl text-zinc-500" />
+                          <HiArrowCircleUp 
+                          className= {`cursor-pointer text-5xl ${active ? "text-white" : " text-zinc-500 "}`}
+                          onClick= {check_news}
+                          />
                          </div>
                       </div>
                 </div>
