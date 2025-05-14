@@ -1,10 +1,15 @@
 import { HiArrowCircleUp } from "react-icons/hi";
+import { AiOutlineLoading } from "react-icons/ai";
+import { SlArrowLeft } from "react-icons/sl";
+import { SlArrowRight } from "react-icons/sl";
 import { useState } from "react";
 import axios from "axios";
 
 const Home = () => {
   const [noticias, setnoticias] = useState([])
   const [active,setactive] = useState(false)
+  const [erro,seterro] = useState(false)
+  const [ openmodal, setopenmodal] = useState(false)
   const [carregando, setcarregando] = useState(false)
 
 const active_btn = (e) => {
@@ -17,7 +22,7 @@ const active_btn = (e) => {
 }
 
 const check_news = () => {
-    setmodal(true)
+    setopenmodal(true)
     setcarregando(true)
     const news = document.querySelector('#get_value_input').value.trim()
     axios 
@@ -27,11 +32,13 @@ const check_news = () => {
       }
     })
     .then((response) => {
-        setnoticias(response.data)
+        setnoticias(response.data.claims)
         setcarregando(false)
-        console.log(response.data)
+        console.log(response.data.claims)
     })
       .catch((error) => {
+        setcarregando(false)
+        seterro(true)
         console.error('Erro detalhado:', {
             status: error.response?.status,
             message: error.response?.data?.message || error.message,
@@ -41,10 +48,46 @@ const check_news = () => {
 }
 
  return (
-   <div className= "flex flex-col  h-screen ">
-      <div className="flex flex-1">
+   <div className= "w-screen h-screen">
 
-        <main className= "back flex-1 flex justify-center items-center">
+     { openmodal && (
+      <div className="absolute h-full w-full bg-black/50 flex justify-center items-center z-50">
+        <div className="bg-zinc-900 w-[65%] h-[75%] rounded-xl flex items-center shadow-2xl shadow-gray-900 flex-col">
+        <div className="flex items-center justify-between  w-full h-12">
+
+            <h2 className="ml-4 text-3xl text-white">Notícias</h2>
+
+            <button
+              onClick={() => setopenmodal(false)}
+              className="text-white bg-red-500 border-none mr-4 hover:bg-red-600 w-8 h-8 rounded-full flex items-center justify-center">
+                X
+            </button>
+
+        </div>
+        <div className="flex-1 flex w-full items-center justify-center">
+            {carregando ? (
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 text-white">
+                    <AiOutlineLoading className = "text-5xl" />
+                </div>
+            ): erro ? (
+              <h3 className="text-white">Não encontrei nenhuma noticia sobre isso :/</h3>
+            ) : noticias ? (
+              <div className="flex items-center justify-center h-full w-full ">
+                <div><SlArrowLeft /></div>
+                {noticias.map((noticia) => (
+                  <div className="bg-white h-[30%] w-[60%] rounded-lg flex items-center justify-center shadow-lg shadow-slate-600">
+                      {noticia.text}
+                  </div>
+                ))}
+                <div><SlArrowRight /></div>
+              </div>
+            ) : ""}
+        </div>
+      </div>
+    </div>
+  )}
+
+       <main className= "back fixed h-full w-full flex justify-center items-center z-10">
               <div className = "flex justify-center items-center w-7/12 h-4/6 rounded-3xl bg-zinc-900 box">
                 <div className = "h-full w-full flex flex-col justify-center items-center">
                       <div className=" w-full h-1/2 flex flex-col justify-center items-center">
@@ -68,7 +111,7 @@ const check_news = () => {
                 </div>
               </div>
         </main>
-      </div>
+
    </div>
  )
 };
