@@ -72,14 +72,12 @@ const check_news = () => {
             ): erro ? (
               <h3 className="text-white">Não encontrei nenhuma noticia sobre isso :/</h3>
             ) : noticias ? (
-              <div className="flex items-center justify-center h-full w-full ">
-                <div><SlArrowLeft /></div>
-                {noticias.map((noticia) => (
-                  <div className="bg-white h-[30%] w-[60%] rounded-lg flex items-center justify-center shadow-lg shadow-slate-600">
-                      {noticia.text}
+              <div className="flex items-center justify-evenly h-full w-full ">
+                <div className="bg-white flex items-center justify-center rounded-lg w-10 h-10 hover:bg-slate-200"><SlArrowLeft /></div>
+                  <div className="bg-white h-[30%] w-[60%] p-2 rounded-lg text-center font-medium flex items-center justify-center shadow-lg ">
+                      {noticias[0].claimReview[0].textualRating}
                   </div>
-                ))}
-                <div><SlArrowRight /></div>
+                <div className="bg-white flex items-center justify-center rounded-lg w-10 h-10 hover:bg-slate-200"><SlArrowRight /></div>
               </div>
             ) : ""}
         </div>
