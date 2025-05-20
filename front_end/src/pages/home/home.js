@@ -7,7 +7,6 @@ import axios from "axios";
 
 const Home = () => {
   const [noticias, setnoticias] = useState([]);
-  const [size, setsize] = useState(10);
   const [vis, setvis] = useState(0);
   const [active, setactive] = useState(false);
   const [error, seterror] = useState(false);
@@ -36,7 +35,6 @@ const Home = () => {
       .then((response) => {
         setnoticias(response.data.claims);
         setcarregando(false);
-        setsize(noticias.length);
         console.log(response.data.claims);
       })
       .catch((error) => {
@@ -49,7 +47,6 @@ const Home = () => {
         });
       });
   };
-
 
   return (
     <div className="w-screen h-screen">
@@ -80,23 +77,29 @@ const Home = () => {
                           setvis(vis - 1);
                         }
                       }}
-                      className="bg-white flex items-center justify-center rounded-lg w-10 h-10 cursor-pointer hover:bg-slate-200"
+                      className="bg-white flex items-center justify-center rounded-lg w-10 h-10 cursor-pointer shadow-lg shadow-zinc-950 hover:bg-slate-200"
                     >
                       <SlArrowLeft />
                     </div>
-                    {/* {noticias.map((noticia) => ( */}
-                    <div
-                      className="bg-white h-[30%] w-[60%] p-2 rounded-lg text-center font-medium flex items-center justify-center shadow-lg "
+                    {noticias.map}
+                    <div 
+                      className="bg-white shadow-lg shadow-zinc-950 h-[55%] w-[60%] p-2 rounded-lg text-center text-sm font-bold flex-col cursor-pointer flex items-center justify-between"
                       key={noticias[vis].id}
                     >
-                      {noticias[vis].text}
+                      <div className="w-full h-[50%]">
+                        <h3>{noticias[vis].text}</h3>
+                      </div>
+                      <div className="w-full h-[50%] flex justify-center items-end">
+                          <h3>{noticias[vis].claimReview[0].textualRating}</h3>
+                      </div>
                     </div>
-                    {/* ))} */}
                     <div
-                      onClick={() => {
-                        setvis(vis + 1);
+                      onClick={() =>{
+                        if (vis < 10) {
+                          setvis(vis+1)
+                        }
                       }}
-                      className="bg-white flex items-center justify-center rounded-lg w-10 h-10 cursor-pointer hover:bg-slate-200"
+                      className="bg-white flex items-center justify-center rounded-lg w-10 h-10 cursor-pointer shadow-lg shadow-zinc-950 hover:bg-slate-200"
                     >
                       <SlArrowRight />
                     </div>
