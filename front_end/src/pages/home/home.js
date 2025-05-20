@@ -7,9 +7,10 @@ import axios from "axios";
 
 const Home = () => {
   const [noticias, setnoticias] = useState([]);
+  const [size, setsize] = useState(10);
   const [vis, setvis] = useState(0);
   const [active, setactive] = useState(false);
-  const [erro, seterro] = useState(false);
+  const [error, seterror] = useState(false);
   const [openmodal, setopenmodal] = useState(false);
   const [carregando, setcarregando] = useState(false);
 
@@ -35,11 +36,12 @@ const Home = () => {
       .then((response) => {
         setnoticias(response.data.claims);
         setcarregando(false);
+        setsize(noticias.length);
         console.log(response.data.claims);
       })
       .catch((error) => {
         setcarregando(false);
-        seterro(true);
+        seterror(true);
         console.error("Erro detalhado:", {
           status: error.response?.status,
           message: error.response?.data?.message || error.message,
@@ -47,6 +49,7 @@ const Home = () => {
         });
       });
   };
+
 
   return (
     <div className="w-screen h-screen">
@@ -68,44 +71,54 @@ const Home = () => {
                 <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 text-white">
                   <AiOutlineLoading className="text-5xl" />
                 </div>
-              )  : noticias ? (
+              ) : noticias ? (
                 <div className="flex flex-col items-center justify-between h-full w-full">
                   <div className="flex items-center justify-evenly h-full w-full ">
-                    <div 
-                    onClick={() => {
-                      if (vis > 0) {
-                        setvis(vis - 1);
-                      }
-                    }}
-                    className="bg-white flex items-center justify-center rounded-lg w-10 h-10 hover:bg-slate-200">
+                    <div
+                      onClick={() => {
+                        if (vis > 0) {
+                          setvis(vis - 1);
+                        }
+                      }}
+                      className="bg-white flex items-center justify-center rounded-lg w-10 h-10 cursor-pointer hover:bg-slate-200"
+                    >
                       <SlArrowLeft />
                     </div>
                     {/* {noticias.map((noticia) => ( */}
-                      <div 
+                    <div
                       className="bg-white h-[30%] w-[60%] p-2 rounded-lg text-center font-medium flex items-center justify-center shadow-lg "
-                      key={noticias[vis].id}>
-                        {noticias[vis].text}
-                      </div>
+                      key={noticias[vis].id}
+                    >
+                      {noticias[vis].text}
+                    </div>
                     {/* ))} */}
-                    <div 
-                    onClick={() => {
-                      setvis(vis + 1)
-                    }}
-                    className="bg-white flex items-center justify-center rounded-lg w-10 h-10 hover:bg-slate-200">
+                    <div
+                      onClick={() => {
+                        setvis(vis + 1);
+                      }}
+                      className="bg-white flex items-center justify-center rounded-lg w-10 h-10 cursor-pointer hover:bg-slate-200"
+                    >
                       <SlArrowRight />
                     </div>
                   </div>
                   <div className="flex flex-row items-center justify-center h-10 w-full">
-                    {noticias.map((noticia) => (
-                      <div className="bg-white rounded-full mr-1 h-4 w-4"></div>
+                    {noticias.map((num) => (
+                      <div
+                        key={num.id}
+                        className={`${
+                          num.text === noticias[vis].text ? "bg-white" : "bg-zinc-500"
+                        } rounded-full mr-1 h-4 w-4`}
+                      ></div>
                     ))}
                   </div>
                 </div>
-              ) : erro ? (
+              ) : error ? (
                 <h3 className="text-white">
                   Não encontrei nenhuma noticia sobre isso :/
                 </h3>
-              ) : ""}
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
