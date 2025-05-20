@@ -96,7 +96,9 @@ const Login = () => {
                 </p>
               </form>)}
         </div>
+
       </div>
+      
     );
   
 }
