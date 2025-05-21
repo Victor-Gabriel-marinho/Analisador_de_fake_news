@@ -5,116 +5,140 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 @layer utilities {
-    *{
-      font-family: "Poppins";
-      margin: 0;
-      padding: 0;
+  * {
+    font-family: "Poppins";
+    margin: 0;
+    padding: 0;
+  }
+
+  .back {
+    background: linear-gradient(145deg, #0d0d18, #1c1c2e, #141422, #0a0a18);
+  }
+
+  .bs {
+    box-shadow: 0 6px 24px #00000066;
+  }
+
+  @keyframes mover {
+    from {
+      transform: translateX(-100%);
     }
 
-    .back{
-      background: linear-gradient(145deg, #0d0d18, #1c1c2e, #141422, #0a0a18);
+    to {
+      transform: translateX(0%);
+    }
+  }
+
+  .mover {
+    animation: mover 1.5s ease;
+  }
+
+  @keyframes trocar {
+    0% {
+      -webkit-transform: translate(100%);
+
     }
 
-    .bs{
-      box-shadow: 0 6px 24px #00000066;
+    100% {
+      -webkit-transform: translate(0%);
+    }
+  }
+
+  .troca {
+    animation: trocar 1.5s ease;
+  }
+
+  @keyframes mudar {
+    0% {
+      color: #cb462e;
     }
 
-    @keyframes mover {
-        from{
-            transform: translateX(-100%);
-        }
-        to{
-            transform: translateX(0%);
-        }
-      }
-      .mover{
-      animation: mover 1.5s ease;
-      }
-      @keyframes trocar{
-        0% {
-          -webkit-transform: translate(100%);
-    
-        }
-        100% {
-          -webkit-transform: translate(0%);
-        }
-      }
-      .troca {
-        animation: trocar 1.5s ease;
-      }
-      @keyframes mudar {
-        0%{
-            color:#cb462e;
-        }
-        25%{
-           color:  #ffb600;
-        }
-        50%{
-            color: #ff8f16;
-        }
-        75%{
-            color: #e56725;
-        }
-        100%{
-            color: #cb462e;
-        }
-      }
-      .mudar{
-      animation: mudar 5s infinite ease-in-out;
-      }
-    }
-    @keyframes abrir {
-      0%{
-        width: 4rem;
-      }
-      100%{
-        width: 16rem;
-      }
-    }
-    .abrir{
-      animation: abrir 0.5s ease;
-    }
-    @keyframes fechar{
-      0%{
-        width: 16rem;
-      }
-      100%{
-          width: 4rem;
-      }
-    }
-    .fechar{
-      animation: fechar 0.5s ease;
-    }
-    @keyframes box {
-      0%{
-        box-shadow: 0px 0px 20px 10px  #cb462e;
-      }
-      25%{
-        box-shadow: 0px 0px 20px 10px #ffb600;
-      }
-      50%{
-        box-shadow: 0px 0px 20px 10px #ff8f16;
-      }
-      75%{
-        box-shadow: 0px 0px 20px 10px #e56725;
-      }
-      100%{
-        box-shadow: 0px 0px 20px 10px #cb462e;
-      }
-    }
-    .box{
-      animation: box 5s infinite ease-in-out;
+    25% {
+      color: #ffb600;
     }
 
-    @keyframes mudar_noticia {
-      0%{
-        opacity: 0.5;
-      }
-      100%{
-        opacity: 1;
-      }
+    50% {
+      color: #ff8f16;
     }
 
-    .mudar_noticia{
-      animation: mudar_noticia 3s ease;
+    75% {
+      color: #e56725;
     }
+
+    100% {
+      color: #cb462e;
+    }
+  }
+
+  .mudar {
+    animation: mudar 5s infinite ease-in-out;
+  }
+}
+
+@keyframes abrir {
+  0% {
+    width: 4rem;
+  }
+
+  100% {
+    width: 16rem;
+  }
+}
+
+.abrir {
+  animation: abrir 0.5s ease;
+}
+
+@keyframes fechar {
+  0% {
+    width: 16rem;
+  }
+
+  100% {
+    width: 4rem;
+  }
+}
+
+.fechar {
+  animation: fechar 0.5s ease;
+}
+
+@keyframes box {
+  0% {
+    box-shadow: 0px 0px 20px 10px #cb462e;
+  }
+
+  25% {
+    box-shadow: 0px 0px 20px 10px #ffb600;
+  }
+
+  50% {
+    box-shadow: 0px 0px 20px 10px #ff8f16;
+  }
+
+  75% {
+    box-shadow: 0px 0px 20px 10px #e56725;
+  }
+
+  100% {
+    box-shadow: 0px 0px 20px 10px #cb462e;
+  }
+}
+
+.box {
+  animation: box 5s infinite ease-in-out;
+}
+
+@keyframes mudar_noticia {
+  0% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.mudar_noticia {
+  animation: mudar_noticia 2s ease;
+}

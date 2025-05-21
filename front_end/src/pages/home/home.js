@@ -7,8 +7,8 @@ import axios from "axios";
 
 const Home = () => {
   const [noticias, setnoticias] = useState([]);
-  const [anim, setAnim] = useState(false);
   const [vis, setvis] = useState(0);
+  const [animation, setAnimation] = useState(false);
   const [active, setactive] = useState(false);
   const [error, seterror] = useState(false);
   const [openmodal, setopenmodal] = useState(false);
@@ -49,6 +49,18 @@ const Home = () => {
       });
   };
 
+  const active_animation = () => {
+    setAnimation(true);
+
+    setTimeout(() => {
+      disable_animation()
+    }, 2000);
+  };
+
+  const disable_animation = () => {
+    setAnimation(false)
+  }
+
   return (
     <div className="w-screen h-screen">
       {openmodal && (
@@ -76,32 +88,42 @@ const Home = () => {
                       onClick={() => {
                         if (vis > 0) {
                           setvis(vis - 1);
+                          active_animation();
                         }
-                        setAnim(true);
                       }}
+                      id="animation"
                       className="bg-white flex items-center justify-center rounded-lg w-10 h-10 cursor-pointer shadow-lg shadow-zinc-950 hover:bg-slate-200"
                     >
                       <SlArrowLeft />
                     </div>
                     {noticias.map}
                     <div
-                      className={`bg-white shadow-lg shadow-zinc-950 h-[55%] w-[60%] p-2 rounded-lg text-center text-sm font-bold flex-col cursor-pointer flex items-center justify-between  ${
-                        anim ? "mudar_noticia" : ""
+                      className={`bg-white shadow-lg shadow-zinc-950 h-[55%] w-[60%] p-2 rounded-lg text-center text-sm font-bold flex-col cursor-pointer flex items-center justify-between ${
+                        animation ? " mudar_noticia" : ""
                       } `}
                       key={noticias[vis].id}
                     >
                       <div className="w-full h-[50%]">
-                        <h3>{noticias[vis].text}</h3>
+                        <h2
+                          id="animation"
+                          className={`${animation ? "mudar_noticia" : ""}`}
+                        >
+                          {noticias ? noticias[vis].text : ""}
+                        </h2>
                       </div>
-                      <div className="w-full h-[50%] flex justify-center items-end">
-                        <h3>{noticias[vis].claimReview[0].textualRating}</h3>
+                      <div
+                        className={`w-full h-[50%] flex justify-center items-end  ${
+                          animation ? "mudar_noticia" : ""
+                        }`}
+                      >
+                        <h3 className="text-red-600 text-xl">{noticias[vis].claimReview[0].textualRating}</h3>
                       </div>
                     </div>
                     <div
                       onClick={() => {
                         if (vis < 10) {
                           setvis(vis + 1);
-                          setAnim(true);
+                          active_animation();
                         }
                       }}
                       className="bg-white flex items-center justify-center rounded-lg w-10 h-10 cursor-pointer shadow-lg shadow-zinc-950 hover:bg-slate-200"
