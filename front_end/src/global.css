@@ -105,3 +105,16 @@
     .box{
       animation: box 5s infinite ease-in-out;
     }
+
+    @keyframes mudar_noticia {
+      0%{
+        opacity: 0.5;
+      }
+      100%{
+        opacity: 1;
+      }
+    }
+
+    .mudar_noticia{
+      animation: mudar_noticia 3s ease;
+    }
