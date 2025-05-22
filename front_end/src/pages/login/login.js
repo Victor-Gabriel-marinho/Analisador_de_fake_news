@@ -30,7 +30,7 @@ const Login = () => {
       .post("http://127.0.0.1:8800/criar", user)
       .then( () => {
         console.log("sucesso ao criar o usuário")
-        navigate('/')
+        navigate('/home')
       })
       .catch( (Error) => {
         console.log("erro ao criar o usuário", Error)
@@ -49,7 +49,7 @@ const Login = () => {
       .get("http://127.0.0.1:8800/validar", user)
       .then((response) => {
           console.log("usuario encontrado", response.data)
-          navigate('/')
+          navigate('/home')
         })
       .catch((Error) => {
         console.log("erro ao encontrar usu", Error)

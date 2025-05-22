@@ -8,8 +8,8 @@ const Rotas = () => {
     return(
     <BrowserRouter>
         <Routes>
-            <Route Component={ Home } path="/" exact />
-            <Route Component={ Login } path="/login" />
+            <Route Component={ Home } path="/home" exact />
+            <Route Component={ Login } path="/" />
         </Routes>
     </BrowserRouter>
     )

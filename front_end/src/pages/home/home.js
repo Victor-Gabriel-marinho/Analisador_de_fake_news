@@ -54,7 +54,7 @@ const Home = () => {
 
     setTimeout(() => {
       disable_animation()
-    }, 2000);
+    }, 500);
   };
 
   const disable_animation = () => {
@@ -97,28 +97,34 @@ const Home = () => {
                       <SlArrowLeft />
                     </div>
                     {noticias.map}
-                    <div
-                      className={`bg-white shadow-lg shadow-zinc-950 h-[55%] w-[60%] p-2 rounded-lg text-center text-sm font-bold flex-col cursor-pointer flex items-center justify-between ${
-                        animation ? " mudar_noticia" : ""
-                      } `}
-                      key={noticias[vis].id}
-                    >
-                      <div className="w-full h-[50%]">
-                        <h2
-                          id="animation"
-                          className={`${animation ? "mudar_noticia" : ""}`}
-                        >
-                          {noticias ? noticias[vis].text : ""}
-                        </h2>
-                      </div>
+                    <a 
+                    className="decoration-transparent text-zinc-900 flex -2 h-[55%] w-[50%]"
+                    href={noticias[vis].claimReview[0].url}>
                       <div
-                        className={`w-full h-[50%] flex justify-center items-end  ${
-                          animation ? "mudar_noticia" : ""
-                        }`}
+                        className={`bg-white shadow-lg shadow-zinc-950 rounded-lg text-center text-sm font-bold flex-col p-3 flex justify-between ${
+                          animation ? " mudar_noticia" : ""
+                        } `}
+                        key={noticias[vis].id}
                       >
-                        <h3 className="text-red-600 text-xl">{noticias[vis].claimReview[0].textualRating}</h3>
+                        <div className="w-full h-[50%] flex justify-center items-start">
+                          <h2
+                            id="animation"
+                            className={` ${animation ? "mudar_noticia" : ""}`}
+                          >
+                            {noticias ? noticias[vis].text : ""}
+                          </h2>
+                        </div>
+                        <div
+                          className={`w-full h-[50%] flex justify-center items-end  ${
+                            animation ? "mudar_noticia" : ""
+                          }`}
+                        >
+                          <h3 className="text-red-600 text-xl">
+                            {noticias[vis].claimReview[0].textualRating.toUpperCase()}
+                            </h3>
+                        </div>
                       </div>
-                    </div>
+                    </a>
                     <div
                       onClick={() => {
                         if (vis < 10) {
